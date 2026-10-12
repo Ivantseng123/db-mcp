@@ -1,0 +1,31 @@
+# Copy to ~/.config/db-mcp/connections.yaml and chmod 600.
+# Each key becomes two tools: run_select_<key> and run_select_more_<key>.
+# Keys: lowercase letters, digits, underscore only.
+connections:
+  customer_a_sit:
+    type: oracle
+    description: Customer A SIT (Oracle)
+    host: db-a.example.com
+    port: 1521
+    sid: ORCL                # or service_name: XEPDB1, or dsn: "host:port/service"
+    user: CHANGE_ME
+    password: CHANGE_ME      # or password_env: CUSTOMER_A_DB_PASSWORD
+    max_rows: 200
+
+  customer_b_sit:
+    type: mssql
+    description: Customer B SIT (SQL Server)
+    host: db-b.example.com
+    port: 1433
+    database: CHANGE_ME
+    user: CHANGE_ME
+    password: CHANGE_ME
+
+  customer_c_sit:
+    type: postgres
+    description: Customer C SIT (PostgreSQL)
+    host: db-c.example.com
+    port: 5432
+    database: CHANGE_ME
+    user: CHANGE_ME
+    password: CHANGE_ME
