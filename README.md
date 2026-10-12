@@ -23,5 +23,17 @@ Register with Claude Code (user scope):
 claude mcp add -s user database-mcp -- ~/local_file/db-mcp/.venv/bin/db-mcp
 ```
 
+Register with Codex CLI (global, written to `~/.codex/config.toml`):
+
+```sh
+codex mcp add database-mcp -- ~/local_file/db-mcp/.venv/bin/db-mcp
+```
+
+Both point at the same server and the same `connections.yaml`, so every connection is available in both tools at once.
+
+## Drivers
+
+No native client or ODBC setup is needed. Each `type` just picks a pip-installed Python driver inside the venv: `oracle` → `oracledb` (thin mode), `mssql` → `python-tds` (pure Python), `postgres` → `psycopg[binary]` (bundles libpq).
+
 Config path override: `DB_MCP_CONFIG=/path/to/connections.yaml`. Passwords may come from env via `password_env`.
 After editing the config, `/mcp` in Claude Code to reconnect (tools are built at startup).
